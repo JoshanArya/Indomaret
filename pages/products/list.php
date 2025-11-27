@@ -76,7 +76,7 @@ $result = mysqli_query($conn, $query);
                                     echo '<button class="btn btn-danger" disabled><i class="fas fa-trash"></i> Hapus</button>';
                                 } else {
                                 ?>
-                                    <form action="../../process/products_process.php" method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?');">
+                                    <form action="/../../process/products_process.php" method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?');">
                                     <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
                                     <input type="hidden" name="action" value="delete">
                                     <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
