@@ -1,6 +1,6 @@
 <?php
-define ('ROOTPATH', $_SERVER['DOCUMENT_ROOT'] . '/indomaret');
-include ROOTPATH . "/config/config.php";
+define('ROOTPATH', $_SERVER['DOCUMENT_ROOT'] . '/indomaret');
+include ROOTPATH . "/../config/config.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = intval($_POST['id']);
