@@ -10,7 +10,7 @@ if ($transaction_id === 0) {
 }
 
 // Get transaction data
-$transaction_query = "SELECT t.*, c.cashier_name, t.pay, t.spare_change
+$transaction_query = "SELECT t.*, c.cashier_name
                      FROM tb_transactions t 
                      LEFT JOIN tb_cashiers c ON t.cashier_id = c.id 
                      WHERE t.id = $transaction_id";
@@ -33,14 +33,14 @@ while ($detail = mysqli_fetch_assoc($detail_result)) {
 }
 
 // Calculate if we need to show payment info
-$show_payment_info = isset($transaction['payment_amount']) && $transaction['payment_amount'] > 0;
-$payment_amount = $show_payment_info ? $transaction['payment_amount'] : 0;
-$payment_change = $show_payment_info ? $transaction['payment_change'] : 0;
+$show_payment_info = $transaction['status'] === 'paid';
+$payment_amount = $transaction['pay'];
+$payment_change = $transaction['spare_change'];
 $status = $show_payment_info ? 'Paid' : 'Pending';
 
 // Format transaction date
 $transaction_date = date('Y-m-d H:i:s', strtotime($transaction['created_at']));
-$transaction_code = isset($transaction['transaction_code']) ? $transaction['transaction_code'] : 'TRX' . str_pad($transaction_id, 4, '0', STR_PAD_LEFT);
+$transaction_code = $transaction['code'];
 ?>
 
 <div class="container">
@@ -71,10 +71,10 @@ $transaction_code = isset($transaction['transaction_code']) ? $transaction['tran
                 <span><?php echo $transaction_date; ?></span>
                 
                 <strong>Kode Transaksi:</strong>
-                <span><?php echo $transaction_code; ?></span>
+                <span><?php echo htmlspecialchars($transaction_code); ?></span>
                 
                 <strong>Kasir:</strong>
-                <span><?php echo htmlspecialchars($transaction['cashier_name']); ?></span>
+                <span><?php echo htmlspecialchars($transaction['cashier_name'] ?? '-'); ?></span>
             </div>
         </div>
     </div>
