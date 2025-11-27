@@ -30,13 +30,13 @@ $result = mysqli_query($conn, $query);
                             <div class="btn-group">
                                 <a href="edit.php?id=<?php echo htmlspecialchars($row['id']); ?>" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
                                 <?php
-                                $query_cek = "SELECT 1 FROM tb_transaction_details WHERE product_id = " . intval($row['id']) . " LIMIT 1";
+                                $query_cek = "SELECT 1 FROM tb_transactions WHERE cashier_id = " . intval($row['id']) . " LIMIT 1";
                                 $cek_result = mysqli_query($conn, $query_cek);
                                 if (mysqli_num_rows($cek_result)) {
                                     echo '<button class="btn btn-danger" disabled><i class="fas fa-trash"></i> Hapus</button>';
                                 } else {
                                 ?>
-                                <form action="../../process/cashiers_process.php" method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?');">
+                                <form action="/../../process/cashiers_process.php" method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?');">
                                     <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
                                     <input type="hidden" name="action" value="delete">
                                     <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
