@@ -55,4 +55,3 @@ $product = mysqli_fetch_assoc($result);
 </div>
 
 <?php include '../../includes/footer.php'; ?>
-
