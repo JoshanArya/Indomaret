@@ -44,7 +44,7 @@ $result = mysqli_query($conn, "SELECT * FROM tb_transactions");
                             echo "<button class='btn btn-danger' disabled><i class='fas fa-trash'></i> Delete</button>";
                     }else{
                     ?>
-                    <form action="/indomaret_RPL3/process/transactions_process.php" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete?')">
+                    <form action="/../process/transactions_process.php" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete?')">
                         <input type="hidden" name="id" value="<?= $row['id'] ?>">
                         <input type="hidden" name="action" value="delete">
                         <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</button>
