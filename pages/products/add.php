@@ -5,7 +5,7 @@ include '../../includes/header.php';
 
 <div class="container">
     <h1>Tambah Produk</h1>
-    <form action="../process/products_process.php" method="POST">
+    <form action="/../../process/products_process.php" method="POST">
         <input type="hidden" name="action" value="add" />
         
         <div class="form-group">
