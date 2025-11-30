@@ -21,6 +21,7 @@ $result = mysqli_query($conn, $query);
             </tr>
         </thead>
         <tbody>
+        // dzwzhr=)
             <?php if (mysqli_num_rows($result) > 0) : ?>
                 <?php while ($row = mysqli_fetch_assoc($result)) : ?>
                     <tr>
